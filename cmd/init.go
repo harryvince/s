@@ -13,7 +13,9 @@ var initCommand = &cobra.Command{
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		prefix, region := args[0], args[1]
-		_, err := internal.NewConfig(prefix, region)
+        profile, _ := cmd.Flags().GetString("profile")
+
+		_, err := internal.NewConfig(prefix, profile, region)
 		if err != nil {
 			fmt.Println("Error occured while trying to create new config:", err)
 			return

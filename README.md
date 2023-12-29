@@ -14,10 +14,11 @@ attempt at an easy maintainable way of doing it.
 ## S Commands
 #### init
 ```
-s init <prefix> <region>
+s init <prefix> <region> --profile <profile_name>
 ```
 - prefix: The prefix for the project your creating
 - region: The AWS region to create the project in
+- profile: The AWS profile to use, uses default when not provided
 
 Initialises s in your repo.
 

@@ -69,6 +69,7 @@ func (s *SSM) GetAllSecrets() ([]SecretValue, error) {
 func Sessions() (*session.Session, string) {
 	config := GetConfig()
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
+        Profile: config.Profile,
 		Config: aws.Config{
 			Region: &config.Region,
 		},

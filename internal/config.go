@@ -11,11 +11,12 @@ import (
 )
 
 type Config struct {
-	Prefix string `yaml:"prefix"`
-	Region string `yaml:"region"`
+	Prefix  string `yaml:"prefix"`
+	Profile string `yaml:"profile"`
+	Region  string `yaml:"region"`
 }
 
-func NewConfig(prefix string, region string) (*Config, error) {
+func NewConfig(prefix string, profile string, region string) (*Config, error) {
 	// First check if file exists
 	if _, err := os.Stat(constants.CONFIG_NAME); err == nil {
 		fmt.Println("Config already exists, failure to create.")
@@ -29,7 +30,7 @@ func NewConfig(prefix string, region string) (*Config, error) {
 		return nil, err
 	}
 
-	config := Config{Prefix: prefix, Region: region}
+	config := Config{Prefix: prefix, Profile: profile, Region: region}
 
 	data, err := yaml.Marshal(&config)
 	if err != nil {

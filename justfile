@@ -1,2 +1,2 @@
-build:
-    go build -o ./build/s
+build-cli:
+    cd cli && go build -o ./build/s && cd ..

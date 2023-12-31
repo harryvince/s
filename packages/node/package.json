@@ -1,0 +1,44 @@
+{
+    "name": "@harryvince_/s",
+    "version": "0.0.1",
+    "description": "S addon for node",
+    "main": "dist/index.js",
+    "scripts": {
+        "lint": "tsc",
+        "format": "prettier --write .",
+        "run": "tsx src/index.ts",
+        "prebuild": "npm run lint",
+        "release": "standard-version",
+        "build": "tsup src/index.ts --format cjs,esm --dts"
+    },
+    "keywords": [],
+    "author": "Harry Vince",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/harryvince/s.git"
+    },
+    "bin": "dist/index.js",
+    "devDependencies": {
+        "@commitlint/cli": "^18.4.3",
+        "@commitlint/config-conventional": "^18.4.3",
+        "@hono/node-server": "^1.3.5",
+        "@types/node": "^20.10.6",
+        "@typescript-eslint/eslint-plugin": "^6.16.0",
+        "@typescript-eslint/parser": "^6.16.0",
+        "eslint": "^8.56.0",
+        "eslint-config-prettier": "^9.1.0",
+        "hono": "^3.11.11",
+        "husky": "^8.0.3",
+        "lint-staged": "^15.2.0",
+        "prettier": "^3.1.1",
+        "standard-version": "^9.5.0",
+        "tsup": "^8.0.1",
+        "tsx": "^4.7.0",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "@aws-sdk/client-ssm": "^3.484.0",
+        "@aws-sdk/credential-provider-ini": "^3.484.0"
+    }
+}

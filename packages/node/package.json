@@ -1,6 +1,6 @@
 {
     "name": "@harryvince_/s",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "S addon for node",
     "main": "dist/index.js",
     "scripts": {

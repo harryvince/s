@@ -12,8 +12,10 @@ var exportCommand = &cobra.Command{
 	Short: "Sets all secrets as environment variables",
 	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
+        env, _ := cmd.Flags().GetString("env")
+
 		client := internal.NewSSMClient()
-		params, err := client.GetAllSecrets()
+		params, err := client.GetAllSecrets(env)
 		for _, param := range params {
 			command := fmt.Sprintf("export %s=%s", param.Name, param.Value)
 			fmt.Println(command)

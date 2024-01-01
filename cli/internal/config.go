@@ -16,7 +16,7 @@ type Config struct {
 	Region  string `yaml:"region"`
 }
 
-func NewConfig(prefix string, profile string, region string) (*Config, error) {
+func NewConfig(prefix string, profile string, region string, env string) (*Config, error) {
 	// First check if file exists
 	if _, err := os.Stat(constants.CONFIG_NAME); err == nil {
 		fmt.Println("Config already exists, failure to create.")
@@ -46,7 +46,7 @@ func NewConfig(prefix string, profile string, region string) (*Config, error) {
 	file.Close()
 
 	ssm_client := NewSSMClient()
-	params, err := ssm_client.ListSecretNames()
+	params, err := ssm_client.ListSecretNames(env)
 
 	if err != nil {
 		fmt.Println("Failed to list secret names during init:", err)

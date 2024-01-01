@@ -14,12 +14,13 @@ var addCommand = &cobra.Command{
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		name, value := args[0], args[1]
+        env, _ := cmd.Flags().GetString("env")
 
 		config := internal.GetConfig()
 
 		// Write the secret to parameter store
 		client := internal.NewSSMClient()
-		parameter := client.Param(fmt.Sprintf(`/%s/%s`, config.Prefix, name))
+		parameter := client.Param(fmt.Sprintf(`/%s/%s/%s`, config.Prefix, env, name))
 		err := parameter.PutValue(value, false)
 		if err != nil {
 			if awsErr, ok := err.(awserr.Error); ok {

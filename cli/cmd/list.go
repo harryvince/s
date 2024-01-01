@@ -12,8 +12,10 @@ var listCommand = &cobra.Command{
 	Short: "Lists all secrets",
 	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
+		env, _ := cmd.Flags().GetString("env")
+
 		ssm := internal.NewSSMClient()
-		params, err := ssm.ListSecretNames()
+		params, err := ssm.ListSecretNames(env)
 		if err != nil {
 			fmt.Println("Error occured while listing secrets:", err)
 			return

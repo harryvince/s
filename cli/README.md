@@ -57,6 +57,15 @@ eval $(s export)
 ```
 Evalutes the output of s for environment variables.
 
+## Global Args
+#### env
+```
+s --env <environment_name>
+```
+- env: The environment to use, dev when not specified
+
+Run command in specified environment
+
 #### help
 ```
 s -h | --help

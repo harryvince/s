@@ -35,7 +35,10 @@ func init() {
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
-    // Additional args
+    // Additional global args
+    var environmentArg string
+    rootCmd.PersistentFlags().StringVar(&environmentArg, "env", "dev", "The Environment to use")
+    // Additional command specific args
     var profileArg string
 	initCommand.Flags().StringVar(&profileArg, "profile", "default", "The Profile to use")
 

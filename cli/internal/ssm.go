@@ -15,8 +15,8 @@ type SSM struct {
 	prefix string
 }
 
-func (s *SSM) ListSecretNames() ([]string, error) {
-	client, prefix := s.client, fmt.Sprintf("/%s/", s.prefix)
+func (s *SSM) ListSecretNames(env string) ([]string, error) {
+	client, prefix := s.client, fmt.Sprintf("/%s/%s/", s.prefix, env)
 
 	params := &ssm.GetParametersByPathInput{
 		Path:           &prefix,
@@ -43,8 +43,8 @@ type SecretValue struct {
 	Value string
 }
 
-func (s *SSM) GetAllSecrets() ([]SecretValue, error) {
-	client, prefix := s.client, fmt.Sprintf("/%s/", s.prefix)
+func (s *SSM) GetAllSecrets(env string) ([]SecretValue, error) {
+	client, prefix := s.client, fmt.Sprintf("/%s/%s/", s.prefix, env)
 
 	params := &ssm.GetParametersByPathInput{
 		Path:           &prefix,
@@ -69,7 +69,7 @@ func (s *SSM) GetAllSecrets() ([]SecretValue, error) {
 func Sessions() (*session.Session, string) {
 	config := GetConfig()
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
-        Profile: config.Profile,
+		Profile: config.Profile,
 		Config: aws.Config{
 			Region: &config.Region,
 		},

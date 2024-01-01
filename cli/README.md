@@ -76,6 +76,6 @@ Shows the helper for s.
 For now I don't use have any official way of distributing s. The latest version
 can be downloaded from the releases page or you can clone the repo and build from
 source. The command for building can be seen below:
-```
+```bash
 go build -o build/s
 ```

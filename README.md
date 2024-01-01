@@ -18,7 +18,7 @@ attempt at an easy maintainable way of doing it.
 
 ## Required IAM Permissions
 Sample policy:
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [

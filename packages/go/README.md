@@ -3,7 +3,7 @@ This is golang package for s, the repo for this project can be found
 at: [S](https://github.com/harryvince/s)
 
 ## Example usage
-```
+```go
 package main
 
 import (

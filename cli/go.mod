@@ -1,4 +1,4 @@
-module github.com/harryvince/s
+module github.com/harryvince/s/cli
 
 go 1.20
 

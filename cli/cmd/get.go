@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/harryvince/s/internal"
+	"github.com/harryvince/s/cli/internal"
 	"github.com/spf13/cobra"
 )
 

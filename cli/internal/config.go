@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/harryvince/s/constants"
+	"github.com/harryvince/s/cli/constants"
 	"gopkg.in/yaml.v2"
 )
 

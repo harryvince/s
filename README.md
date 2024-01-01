@@ -15,3 +15,24 @@ attempt at an easy maintainable way of doing it.
 
 ## Packages (WIP)
 [Node](packages/node)
+
+## Required IAM Permissions
+Sample policy:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Permissions",
+            "Effect": "Allow",
+            "Action": [
+                "ssm:PutParameter",
+                "ssm:DeleteParameter",
+                "ssm:GetParametersByPath",
+                "ssm:GetParameter"
+            ],
+            "Resource": "arn:aws:ssm:*:ACCOUNT_ID:parameter/*"
+        }
+    ]
+}
+```

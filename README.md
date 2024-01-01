@@ -11,7 +11,7 @@ I just wanted something that worked and sat on top of my own accounts. There
 are other free tools online that acomplish a similar thing this is just my
 attempt at an easy maintainable way of doing it.
 
-[CLI](cli/README.md)
+[CLI](cli)
 
 ## Packages (WIP)
-[Node](packages/node/README.md)
+[Node](packages/node)

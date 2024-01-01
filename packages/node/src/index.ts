@@ -28,10 +28,19 @@ class Config {
     }
 }
 
-export function s(callback: () => void) {
+export function s(
+    callback: () => void,
+    options?: {
+        env?: string;
+    }
+) {
     const runningDirectory = process.cwd();
     const configPath = join(runningDirectory, '.s.yml');
     const config = new Config(readFileSync(configPath, 'utf-8'));
+
+    const environment = options && options.env ? options.env : 'dev';
+
+    const parameterPrefix = `/${config.prefix}/${environment}/`
 
     const ssmClient = new SSMClient({
         region: config.region,
@@ -41,7 +50,7 @@ export function s(callback: () => void) {
     ssmClient
         .send(
             new GetParametersByPathCommand({
-                Path: `/${config.prefix}/`,
+                Path: parameterPrefix,
                 WithDecryption: true,
             })
         )
@@ -49,7 +58,7 @@ export function s(callback: () => void) {
             if (data && data.Parameters) {
                 for (let index = 0; index < data.Parameters.length; index++) {
                     const param = data.Parameters[index]!;
-                    process.env[param.Name!.replace(`/${config.prefix}/`, '')] =
+                    process.env[param.Name!.replace(parameterPrefix, '')] =
                         param.Value!;
                 }
                 console.log('s: Environment Variables set!');

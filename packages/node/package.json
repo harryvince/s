@@ -1,6 +1,6 @@
 {
     "name": "@harryvince_/s",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "S addon for node",
     "main": "dist/index.js",
     "scripts": {
@@ -9,7 +9,8 @@
         "run": "tsx src/index.ts",
         "prebuild": "npm run lint",
         "release": "standard-version",
-        "build": "tsup src/index.ts --format cjs,esm --dts"
+        "build": "tsup src/index.ts --format cjs,esm --dts",
+        "test": "tsx test/index.ts"
     },
     "keywords": [],
     "author": "Harry Vince",

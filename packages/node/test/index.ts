@@ -7,4 +7,4 @@ app.get('/', (c) => c.text('Test Server'));
 
 s(() => {
     serve({ fetch: app.fetch, port: Number(process.env.port!) });
-});
+}, { env: 'test' });
